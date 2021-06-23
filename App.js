@@ -12,9 +12,10 @@ export default function App() {
         focusSubject ? (
             <Text>build timer</Text>
         ):(
-            <Focus/>
+            <Focus addSubject={setFocusSubject}/>
         )
       }
+      <Text>{focusSubject}</Text>
     </View>
   );
 }

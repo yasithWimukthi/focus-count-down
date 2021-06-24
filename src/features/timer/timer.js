@@ -7,7 +7,9 @@ import {CountDown} from "../../components/CountDown";
 export const Timer = ({focusSubject}) =>{
     return(
         <View style={styles.container}>
-            <CountDown/>
+            <View style={styles.countDown}>
+                <CountDown/>
+            </View>
             <View style={{paddingTop:spacing.xxl}}>
                 <Text style={styles.title}>Focusing on : </Text>
                 <Text style={styles.task}>{focusSubject}</Text>
@@ -28,5 +30,10 @@ const styles = StyleSheet.create({
         color:colors.white,
         textAlign: 'center',
         fontWeight:'bold'
+    },
+    countDown:{
+        flex:0.5,
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 });

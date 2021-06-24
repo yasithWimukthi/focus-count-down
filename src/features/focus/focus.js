@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import {View,Text,StyleSheet} from 'react-native';
 import {TextInput} from 'react-native-paper';
 import {RoundedButton} from "../../components/RoundedButton";
+import {fontSizes, spacing} from "../../utils/sizes";
+import {colors} from "../../utils/colors";
 
 export const Focus = ({addSubject}) =>{
 
@@ -32,20 +34,19 @@ export const Focus = ({addSubject}) =>{
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding:50
     },
     titleContainer:{
         flex:0.5,
-        padding:16,
+        padding:spacing.md,
         justifyContent: 'center'
     },
     title:{
-        color:'white',
+        color:colors.white,
         fontWeight:'bold',
-        fontSize:24
+        fontSize:fontSizes.lg
     },
     inputContainer:{
-        paddingTop:20,
+        paddingTop:spacing.md,
         flexDirection:'row',
         alignItems:'center'
     }

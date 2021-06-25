@@ -9,7 +9,7 @@ const formatTime = time => time < 10 ? `0${time}` : time;
 
 export const CountDown = ({
         minutes = 20,
-        isPaused
+        isPaused = true
     }) =>{
 
     const interval = useRef(null);
@@ -26,11 +26,13 @@ export const CountDown = ({
 
     useEffect(() => {
 
+        if(isPaused) return;
+
         interval.current = setInterval(countDown,1000);
 
         // cleanup when un mounting
         return () => clearInterval(interval.current);
-    }, []);
+    }, [isPaused]);
 
 
     const [millis,setMillis] = useState(minutesToMillis(minutes));

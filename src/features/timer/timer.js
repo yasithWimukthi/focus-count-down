@@ -54,6 +54,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttonWrapper:{
-
+        flex:0.3,
+        padding:15,
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 });

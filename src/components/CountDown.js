@@ -28,7 +28,10 @@ export const CountDown = ({
 
     useEffect(() => {
 
-        if(isPaused) return;
+        if(isPaused){
+            if(interval.current) clearInterval(interval.current);
+            return;
+        }
 
         interval.current = setInterval(countDown,1000);
 

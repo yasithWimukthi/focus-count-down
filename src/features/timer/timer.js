@@ -17,8 +17,10 @@ export const Timer = ({focusSubject}) =>{
         setProgress(progress);
     }
 
-    const changeTime = () => {
-
+    const changeTime = minutes => {
+        setMinutes(minutes);
+        setProgress(1);
+        setIsStarted(false);
     }
 
     return(
@@ -82,6 +84,7 @@ const styles = StyleSheet.create({
         flex:0.3,
         padding:15,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        flexDirection: 'row'
     }
 });

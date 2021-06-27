@@ -16,6 +16,7 @@ export default function App() {
             <Timer
                 focusSubject={focusSubject}
                 timerEnd={()=>setFocusSubject(null)}
+                clearSubject={()=>setFocusSubject(null)}
             />
         ):(
             <Focus addSubject={setFocusSubject}/>

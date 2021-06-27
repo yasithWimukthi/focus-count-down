@@ -10,7 +10,7 @@ import {Timing} from "./Timing";
 
 const DEFAULT_TIME = 0.1;
 
-export const Timer = ({focusSubject,timerEnd}) =>{
+export const Timer = ({focusSubject,timerEnd,clearSubject}) =>{
 
     // keep display on
     useKeepAwake();
@@ -86,6 +86,9 @@ export const Timer = ({focusSubject,timerEnd}) =>{
                     />
                 )}
             </View>
+            <View style={styles.clearSubject}>
+                <RoundedButton size={50} title="-" onPress={() =>clearSubject()}/>
+            </View>
         </View>
     )
 }
@@ -114,5 +117,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         flexDirection: 'row'
+    },
+    clearSubject:{
+        paddingBottom:25,
+        paddingLeft:25
     }
 });

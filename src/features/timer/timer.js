@@ -10,7 +10,7 @@ import {Timing} from "./Timing";
 
 const DEFAULT_TIME = 0.1;
 
-export const Timer = ({focusSubject}) =>{
+export const Timer = ({focusSubject,timerEnd}) =>{
 
     // keep display on
     useKeepAwake();
@@ -37,6 +37,7 @@ export const Timer = ({focusSubject}) =>{
         setMinutes(DEFAULT_TIME);
         setProgress(1);
         setIsStarted(false);
+        timerEnd();
     }
 
     const changeTime = minutes => {
@@ -52,7 +53,7 @@ export const Timer = ({focusSubject}) =>{
                     minutes={minutes}
                     isPaused={!isStarted}
                     onProgress={onProgress}
-                    omEnd={onTimeEnd}
+                    onEnd={onTimeEnd}
                 />
             </View>
             <View style={{paddingTop:spacing.xxl}}>

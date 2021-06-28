@@ -33,8 +33,19 @@ export default function App() {
   }
 
   const loadFocusHistory = async () => {
-
+    try{
+      const history = await AsyncStorage.getItem('focusHistory');
+      if (history && JSON.parse(history).length ){
+        setFocusHistory(JSON.parse(history))
+      }
+    }catch(err){
+      console.log(err)
+    }
   }
+
+  useEffect(() => {
+    loadFocusHistory();
+  },[])
 
   useEffect(() => {
     saveFocusHistory();

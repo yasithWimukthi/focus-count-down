@@ -5,10 +5,19 @@ import {colors} from "./src/utils/colors";
 import {Timer} from "./src/features/timer/timer";
 import {spacing} from "./src/utils/sizes";
 
+const STATUS = {
+  COMPLETE : 1,
+  CANCELLED : 2
+}
+
 export default function App() {
 
   const [focusSubject,setFocusSubject] = useState(null);
   const [focusHistory,setFocusHistory] = useState([]);
+  
+  const addFocusHistorySubjectWithStatus = (subject,status) => {
+    setFocusHistory([...focusHistory,{subject,status}]);
+  }
 
   useEffect(() => {
     if(focusSubject){
@@ -22,8 +31,14 @@ export default function App() {
         focusSubject ? (
             <Timer
                 focusSubject={focusSubject}
-                timerEnd={()=>setFocusSubject(null)}
-                clearSubject={()=>setFocusSubject(null)}
+                timerEnd={()=> {
+                  addFocusHistorySubjectWithStatus(focusSubject,STATUS.COMPLETE)
+                  setFocusSubject(null);
+                }}
+                clearSubject={()=> {
+                  addFocusHistorySubjectWithStatus(focusSubject,STATUS.CANCELLED)
+                  setFocusSubject(null);
+                }}
             />
         ):(
             <Focus addSubject={setFocusSubject}/>

@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     },
     clearSubject:{
         paddingBottom:25,
-        paddingLeft:25
+        paddingLeft:25,
+        margin: 'auto'
     }
 });

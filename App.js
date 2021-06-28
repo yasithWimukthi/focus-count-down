@@ -4,6 +4,7 @@ import {Focus} from "./src/features/focus/focus";
 import {colors} from "./src/utils/colors";
 import {Timer} from "./src/features/timer/timer";
 import {spacing} from "./src/utils/sizes";
+import {FocusHistory} from "./src/features/focus/FocusHistory";
 
 const STATUS = {
   COMPLETE : 1,
@@ -19,11 +20,15 @@ export default function App() {
     setFocusHistory([...focusHistory,{subject,status}]);
   }
 
-  useEffect(() => {
-    if(focusSubject){
-      setFocusHistory([...focusHistory,focusSubject]);
-    }
-  },[focusSubject]);
+  const onClear = () =>{
+
+  }
+
+  // useEffect(() => {
+  //   if(focusSubject){
+  //     setFocusHistory([...focusHistory,focusSubject]);
+  //   }
+  // },[focusSubject]);
 
   return (
     <View style={styles.container}>
@@ -41,7 +46,10 @@ export default function App() {
                 }}
             />
         ):(
-            <Focus addSubject={setFocusSubject}/>
+            <>
+              <Focus addSubject={setFocusSubject}/>
+              <FocusHistory focusHistory={focusHistory} onClear={onClear}/>
+            </>
         )
       }
     </View>

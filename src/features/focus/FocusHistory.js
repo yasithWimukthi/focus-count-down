@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View,FlatList,SafeAreaView } from 'react-native';
 import {spacing,fontSizes} from "../../utils/sizes";
 import {colors} from "../../utils/colors";
+import {RoundedButton} from "../../components/RoundedButton";
 
 const historyItem = ({item,index}) =>{
     return (
@@ -19,15 +20,21 @@ export const FocusHistory = ({focusHistory,onClear}) => {
     return (
         <>
             <SafeAreaView style={{flex: 1,alignItems: 'center'}}>
-                <Text style={styles.title}>Focused Things</Text>
+
                 {
                     !!focusHistory.length && (
-                        <FlatList
-                            style={{flex: 1}}
-                            contentContainerStyle={{flex: 1,alignItems: 'center'}}
-                            data={focusHistory}
-                            renderItem={historyItem}
-                        />
+                        <>
+                            <Text style={styles.title}>Focused Things</Text>
+                            <FlatList
+                                style={{flex: 1}}
+                                contentContainerStyle={{flex: 1,alignItems: 'center'}}
+                                data={focusHistory}
+                                renderItem={historyItem}
+                            />
+                            <View style={styles.clearContainer}>
+                                <RoundedButton size={75} title="Clear" onPress={() =>onClear()}/>
+                            </View>
+                        </>
                     )
                 }
             </SafeAreaView>
@@ -45,5 +52,9 @@ const styles = StyleSheet.create({
     title:{
         color : colors.white,
         fontSize : fontSizes.lg
+    },
+    clearContainer:{
+        alignItems: 'center',
+        padding: spacing.md
     }
 });

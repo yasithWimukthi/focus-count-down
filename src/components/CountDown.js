@@ -35,6 +35,13 @@ export const CountDown = ({
     },[minutes]);
 
     useEffect(() => {
+        onProgress(millis/minutesToMillis(minutes))
+        if (millis === 0){
+            onEnd();
+        }
+    },[millis]);
+
+    useEffect(() => {
 
         if(isPaused){
             if(interval.current) clearInterval(interval.current);

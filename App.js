@@ -17,7 +17,7 @@ export default function App() {
   const [focusHistory,setFocusHistory] = useState([]);
   
   const addFocusHistorySubjectWithStatus = (subject,status) => {
-    setFocusHistory([...focusHistory,{subject,status}]);
+    setFocusHistory([...focusHistory,{key:String(focusHistory.length+1),subject,status}]);
   }
 
   const onClear = () =>{
